@@ -36,7 +36,16 @@ Compiling contracts...
 
 ## deployment
 
+### testnet
+
 core contract impl deployed at cfxtest:acejst7djxht36w723jw6jvjk5v4p3zkruke0zmyfv
 core contract proxy deployed at CFXTEST:TYPE.CONTRACT:ACGJ7TM0NF8WWBFDFGGMUZVN7Y75R347FJ4VTFGF27
 evm contract impl deployed at 0x9D16F32f48B1D546B1F05F67BEE2ff1a69B5aA3A
 evm contract proxy deployed at 0x11c9a9337F63774dAae24F21db2F5b05fA3E5927
+
+### mainnet
+
+core contract impl deployed at cfx:acff58p0z6mtcy6vt0crjgtsvgtvkh92568gc1rwzn
+core contract proxy deployed at CFX:TYPE.CONTRACT:ACD97PBHXM11CEGRZ3ANUUVCUJ9J0NH956A108F5CC
+evm contract impl deployed at 0x634757eFE5DD3D27ecf38480c6F2Eac6752E90DB
+evm contract proxy deployed at 0x500371e7Ec0B5BCA911A11964300E694bb0FEc9D
