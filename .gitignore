@@ -1,5 +1,5 @@
 __pycache__
-.env
+.env*
 .history
 .hypothesis/
 .DS_STORE
@@ -7,3 +7,4 @@ __pycache__
 build/
 reports/
 node_modules
+*.env

@@ -57,9 +57,11 @@ def main():
     batch_nbr = 20230401
     espace_chain_id = web3.eth.chain_id
     oracle_expiration = 1000 # should set to 30 * 24 * 60 * 60 * 2 in deployment env
+    ratio = 1
+    base_rarity = 1
 
-    owner.transfer(evm_user, "1 ether")  # type: ignore
-    owner.transfer(evm_another_address, "1 ether")  # type: ignore
+    owner.transfer(evm_user, 10**18)  # type: ignore
+    owner.transfer(evm_another_address, 10**18)  # type: ignore
 
     # setup
     cross_space_call = cast(Contract, MockCrossSpaceCall.deploy({"from": owner}))
@@ -114,7 +116,7 @@ def main():
     )
 
     # start batch
-    core_contract.startBatch(batch_nbr, oracle_signer, authorizer, 1, {"from": owner})
+    core_contract.startBatch(batch_nbr, oracle_signer, authorizer, ratio, {"from": owner})
 
     # print("should fail because permission is not granted")
     should_revert(
@@ -138,7 +140,7 @@ def main():
         oracle_signer,
         authorizer,
         "hello_poap",
-        1,
+        base_rarity,
         user,
         evm_user,
         random_sender,
@@ -285,7 +287,7 @@ def main():
         oracle_signer,
         authorizer,
         "hello_poap",
-        1,
+        base_rarity,
         user,
         None,
         random_sender,
@@ -297,7 +299,7 @@ def main():
         oracle_signer,
         authorizer,
         "hello_poap",
-        1,
+        base_rarity,
         None,
         evm_user,
         random_sender,
@@ -311,11 +313,19 @@ def main():
         oracle_signer,
         authorizer,
         "hello_poap",
-        1,
+        base_rarity,
         None,
         None,
         random_sender,
     )
+    
+    # test rarity and batchNbr
+    
+    assert core_contract.getTokenBatchRatio(token_id) == ratio
+    assert evm_contract.getTokenBatchRatio(token_id) == ratio
+    
+    assert core_contract.getTokenRarity(token_id) == base_rarity
+    assert evm_contract.getTokenRarity(token_id) == base_rarity
 
     core_contract.setBaseURI("https://baidu.com/", { "from": owner })
     assert core_contract.tokenURI(token_id) == evm_contract.tokenURI(token_id)

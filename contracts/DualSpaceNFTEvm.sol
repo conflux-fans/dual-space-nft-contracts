@@ -85,6 +85,11 @@ contract DualSpaceNFTEvm is DualSpaceGeneral {
             _baseExpirationBlockInterval;
     }
 
+    function getTokenBatchRatio(uint256 tokenId) public view override returns (uint8) {
+        uint128 batchNbr = _resolveTokenId(tokenId).batchNbr;
+        return _batchExpirationSetting[batchNbr].ratio;
+    }
+
     function startBatch(uint128 batchNbr, uint8 ratio) public fromCore {
         _batchExpirationSetting[batchNbr] = ExpirationSetting(
             block.number,

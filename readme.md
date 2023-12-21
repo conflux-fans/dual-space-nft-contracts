@@ -38,11 +38,11 @@ Compiling contracts...
 
 ### testnet
 
-core contract impl deployed at `cfxtest:acejst7djxht36w723jw6jvjk5v4p3zkruke0zmyfv`
+core contract impl deployed at `cfxtest:ach9ydh36fxeu931w81pwef0wg7t5374yjt7yd8bmx`
 
 core contract proxy deployed at `CFXTEST:TYPE.CONTRACT:ACGJ7TM0NF8WWBFDFGGMUZVN7Y75R347FJ4VTFGF27`
 
-evm contract impl deployed at `0x9D16F32f48B1D546B1F05F67BEE2ff1a69B5aA3A`
+evm contract impl deployed at `0x778A5c7b667006a9563f4423349479FAd7a1817f`
 
 evm contract proxy deployed at `0x11c9a9337F63774dAae24F21db2F5b05fA3E5927`
 

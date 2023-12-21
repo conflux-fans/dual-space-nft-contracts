@@ -273,6 +273,23 @@ contract DualSpaceNFTCore is
             );
     }
 
+    function getTokenBatchRatio(uint256 tokenId) public view override returns (uint8) {
+        return
+            uint8(
+                uint256(
+                    bytes32(
+                        _crossSpaceCall.staticCallEVM(
+                            _evmContractAddress,
+                            abi.encodeWithSignature(
+                                "getTokenBatchRatio(uint256)",
+                                tokenId
+                            )
+                        )
+                    )
+                )
+            );
+    }
+
     function _isCoreTransferable(uint256 tokenId) internal view returns (bool) {
         bytes20 currentEvmOwner = evmOwnerOf(tokenId);
         return currentEvmOwner == _evmContractAddress;

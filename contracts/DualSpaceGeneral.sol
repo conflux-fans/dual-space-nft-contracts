@@ -46,4 +46,12 @@ abstract contract DualSpaceGeneral is ERC721Upgradeable, UUPSUpgradeable {
     // function lock(uint256 tokenId, uint256 period) public 
 
     function getPrivilegeExpiration(uint256 tokenId) public virtual view returns (uint256);
+
+    function getTokenBatchRatio(uint256 batchNbr) public virtual view returns (uint8);
+
+    function getTokenRarity(uint256 tokenId) public pure returns (uint8) {
+        uint256 batchNbr = tokenId/(10**6);
+        uint256 rarity = (tokenId - batchNbr * 10**6 )/10**4;
+        return uint8(rarity);
+    }
 }
